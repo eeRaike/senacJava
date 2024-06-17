@@ -2,7 +2,10 @@
 package desafio07;
 
 public interface InterfaceRadio {
+    //Atributos
     
+    
+    //Métodos
     public abstract void play();
     public abstract void pause();
     public abstract void estado();
