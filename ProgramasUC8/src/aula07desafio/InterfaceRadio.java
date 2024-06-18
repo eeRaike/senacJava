@@ -1,5 +1,5 @@
 
-package desafio07;
+package aula07desafio;
 
 public interface InterfaceRadio {
     //Atributos
