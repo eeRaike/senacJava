@@ -1,6 +1,7 @@
 
 package aula11;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class JfrTelaInicial extends javax.swing.JFrame {
@@ -41,6 +42,7 @@ public class JfrTelaInicial extends javax.swing.JFrame {
         setTitle("Tela :)");
         setResizable(false);
 
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Primeira interface gráfica TDS");
 
@@ -87,6 +89,11 @@ public class JfrTelaInicial extends javax.swing.JFrame {
         });
 
         btnTroca.setText("Troca");
+        btnTroca.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnTrocaFocusLost(evt);
+            }
+        });
         btnTroca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTrocaActionPerformed(evt);
@@ -128,6 +135,14 @@ public class JfrTelaInicial extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        txtNomeUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNomeUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomeUsuarioFocusLost(evt);
+            }
+        });
         txtNomeUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeUsuarioActionPerformed(evt);
@@ -136,9 +151,26 @@ public class JfrTelaInicial extends javax.swing.JFrame {
 
         jLabel1.setText("Nome do usuário:");
 
+        txtIdade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIdadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtIdadeFocusLost(evt);
+            }
+        });
         txtIdade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdadeActionPerformed(evt);
+            }
+        });
+
+        txtcidade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtcidadeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtcidadeFocusLost(evt);
             }
         });
 
@@ -227,12 +259,19 @@ public class JfrTelaInicial extends javax.swing.JFrame {
             String idade = txtIdade.getText();
             String cidade = txtcidade.getText();
             
-            String mensagem = "Olá " + nome + ". A idade informada é " + idade+ ". e a cidade digitada é: " + cidade;
+            if(nome.isEmpty()|| idade.isEmpty() || cidade.isEmpty()){
+            
+                JOptionPane.showMessageDialog(null, "Insira as informações restantes ");
+            
+            }else{String mensagem = "Olá " + nome + ". A idade informada é " + idade+ ". e a cidade digitada é: " + cidade;
             JOptionPane.showMessageDialog(null, mensagem);
             
             txtNomeUsuario.setText("");
             txtIdade.setText("");
             txtcidade.setText("");
+            }
+            
+            
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -245,12 +284,60 @@ public class JfrTelaInicial extends javax.swing.JFrame {
     private void btnTrocaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrocaActionPerformed
         // TODO add your handling code here:
         String a = "";
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
              a = a + "a";
             lblTitle.setText(a);
         }
         
     }//GEN-LAST:event_btnTrocaActionPerformed
+
+    private void btnTrocaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnTrocaFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTrocaFocusLost
+
+    private void txtNomeUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeUsuarioFocusLost
+        // TODO add your handling code here:
+        
+        if(txtNomeUsuario.getText().isEmpty()){
+            String mensagemCampoVazio = "Campo de nome está vazio";
+            JOptionPane.showMessageDialog(null, mensagemCampoVazio);
+            txtNomeUsuario.setBackground(Color.red);
+        }
+        
+    }//GEN-LAST:event_txtNomeUsuarioFocusLost
+
+    private void txtIdadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdadeFocusGained
+        // TODO add your handling code here:
+        txtIdade.setBackground(Color.white);
+    }//GEN-LAST:event_txtIdadeFocusGained
+
+    private void txtNomeUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeUsuarioFocusGained
+        // TODO add your handling code here:
+        txtNomeUsuario.setBackground(Color.white);
+    }//GEN-LAST:event_txtNomeUsuarioFocusGained
+
+    private void txtIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdadeFocusLost
+        // TODO add your handling code here:
+        if(txtIdade.getText().isEmpty()){
+            String mensagemCampoVazio = "Campo de idade está vazio";
+            JOptionPane.showMessageDialog(null, mensagemCampoVazio);
+            txtIdade.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_txtIdadeFocusLost
+
+    private void txtcidadeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcidadeFocusGained
+        // TODO add your handling code here:
+         txtcidade.setBackground(Color.white);
+    }//GEN-LAST:event_txtcidadeFocusGained
+
+    private void txtcidadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtcidadeFocusLost
+        // TODO add your handling code here:
+        if(txtcidade.getText().isEmpty()){
+            String mensagemCampoVazio = "Campo de cidade está vazio";
+            JOptionPane.showMessageDialog(null, mensagemCampoVazio);
+            txtcidade.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_txtcidadeFocusLost
 
     /**
      * @param args the command line arguments
