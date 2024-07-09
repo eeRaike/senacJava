@@ -26,6 +26,14 @@ public class Calculadora {
         return valorFinanciado;
     }
     
+    public double calcValorFCap(double numMonths, double taxMonth, double capital){
+        double valFinal;
+        
+        valFinal = (Math.pow((1 + taxMonth/100), numMonths))*capital;
+        
+        return valFinal;
+    }
+    
     
     
 }
