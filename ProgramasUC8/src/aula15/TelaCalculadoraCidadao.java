@@ -4,8 +4,11 @@
  */
 package aula15;
 
-
-import java.util.Date;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,17 +16,20 @@ import javax.swing.JOptionPane;
  * @author Aluno
  */
 public class TelaCalculadoraCidadao extends javax.swing.JFrame {
+
     int tabIndex = 0;
     /**
      * Creates new form Tela
      */
+
+    DateTimeFormatter formHora = DateTimeFormatter.ofPattern("E,HH:mm:ss");
+    DateTimeFormatter formData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     public TelaCalculadoraCidadao() {
         initComponents();
-        Date date = new Date();
-        datetime.setText(date.toString());
-        
-        
-        
+        new atualizaHora().start();
+        new checaSaida().start();
+
     }
 
     /**
@@ -42,8 +48,8 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        datetime = new javax.swing.JLabel();
+        lblHours = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
         pnlBase4 = new javax.swing.JPanel();
         lblCopyright = new javax.swing.JLabel();
         btnProxAba = new javax.swing.JButton();
@@ -134,19 +140,11 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
         jLabel2.setText("Selecione a opção de cálculo das abas abaixo");
         jPanel4.add(jLabel2);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        lblHours.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHours.setText("Hora");
 
-        datetime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        datetime.setText("Data e Hora");
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDate.setText("Data");
 
         javax.swing.GroupLayout pnlBase3Layout = new javax.swing.GroupLayout(pnlBase3);
         pnlBase3.setLayout(pnlBase3Layout);
@@ -155,26 +153,30 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
             .addGroup(pnlBase3Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlBase3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(datetime, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlBase3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblDate, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                    .addComponent(lblHours, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pnlBase3Layout.setVerticalGroup(
             pnlBase3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlBase3Layout.createSequentialGroup()
-                .addGroup(pnlBase3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBase3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(datetime)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lblDate)
+                .addGroup(pnlBase3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBase3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlBase3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblHours)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         getContentPane().add(pnlBase3, java.awt.BorderLayout.PAGE_START);
@@ -386,7 +388,7 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
                 .addComponent(pnlFinancPrest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(pnlTabela2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnClearFinanc, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(btnClearFinanc, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCalcFinanc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
@@ -500,15 +502,15 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
 
     private void btnCalcAplicRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcAplicRegActionPerformed
         //Capturar os valores que são digitados pelo o usuário
-        
+
         double numMonths = Double.parseDouble(txtARNumMeses.getText());
         double taxMonths = Double.parseDouble(txtARTaxJuros.getText());
         double valDeposit = Double.parseDouble(txtARValDep.getText());
         double valFinal;
-        
+
         Calculadora calc = new Calculadora();
         valFinal = calc.calcAplicDepoReg(numMonths, taxMonths, valDeposit);
-        
+
         txtARValFinal.setText(String.valueOf(valFinal));
     }//GEN-LAST:event_btnCalcAplicRegActionPerformed
 
@@ -522,89 +524,89 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
 
     private void btnVoltAbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltAbaActionPerformed
         // TODO add your handling code here:
-        if(tabIndex == 0){
-        tabIndex = 2;
-        pnlTabelas.setSelectedIndex(tabIndex);
-        System.out.println("Tab changed current index:" + tabIndex);
-        }else{
-        tabIndex--;
-        pnlTabelas.setSelectedIndex(tabIndex);
-        System.out.println("Tab changed current index:" + tabIndex);
+        if (tabIndex == 0) {
+            tabIndex = 2;
+            pnlTabelas.setSelectedIndex(tabIndex);
+            System.out.println("Tab changed current index:" + tabIndex);
+        } else {
+            tabIndex--;
+            pnlTabelas.setSelectedIndex(tabIndex);
+            System.out.println("Tab changed current index:" + tabIndex);
         }
-        
+
     }//GEN-LAST:event_btnVoltAbaActionPerformed
 
     private void btnProxAbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxAbaActionPerformed
         // TODO add your handling code here:
-        if(tabIndex == 2){
-        tabIndex = 0;
-        pnlTabelas.setSelectedIndex(tabIndex);
-         System.out.println("Tab changed current index:" + tabIndex);
-        }else{
-        tabIndex++;
-        pnlTabelas.setSelectedIndex(tabIndex);
-        System.out.println("Tab changed current index:" + tabIndex);
+        if (tabIndex == 2) {
+            tabIndex = 0;
+            pnlTabelas.setSelectedIndex(tabIndex);
+            System.out.println("Tab changed current index:" + tabIndex);
+        } else {
+            tabIndex++;
+            pnlTabelas.setSelectedIndex(tabIndex);
+            System.out.println("Tab changed current index:" + tabIndex);
         }
     }//GEN-LAST:event_btnProxAbaActionPerformed
 
     private void btnCalcFinancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcFinancActionPerformed
         // TODO add your handling code here:
-        
+
         double numMonths = Double.parseDouble(txtFPNumMeses.getText());
         double taxMonths = Double.parseDouble(txtFPTaxJuros.getText());
         double valPrest = Double.parseDouble(txtFPValPrest.getText());
         double valFinal;
-        
+
         Calculadora calc = new Calculadora();
-        
+
         valFinal = calc.calcFinancPrestFixas(numMonths, taxMonths, valPrest);
-        
+
         txtFPValFinal.setText(String.valueOf(valFinal));
     }//GEN-LAST:event_btnCalcFinancActionPerformed
 
     private void btnClearFinancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearFinancActionPerformed
         // TODO add your handling code here:
-        
+
         txtFPNumMeses.setText("");
         txtFPTaxJuros.setText("");
         txtFPValPrest.setText("");
         txtFPValFinal.setText("");
-        
+
     }//GEN-LAST:event_btnClearFinancActionPerformed
 
     private void txtFPNumMesesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFPNumMesesFocusLost
         // TODO add your handling code here:
-        
+
         try {
-            if(txtFPNumMeses.getText().isEmpty()){
+            if (txtFPNumMeses.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtFPNumMeses.grabFocus();
-            }else{
+            } else {
                 double NumMonths = Double.parseDouble(txtFPNumMeses.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtFPNumMeses.setText("");
             JOptionPane.showMessageDialog(null, msg);
             txtFPNumMeses.grabFocus();
         }
-        
+
     }//GEN-LAST:event_txtFPNumMesesFocusLost
 
     private void txtFPTaxJurosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFPTaxJurosFocusLost
         // TODO add your handling code here:
-        
+
         try {
-            if(txtFPTaxJuros.getText().isEmpty()){
+            if (txtFPTaxJuros.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtFPTaxJuros.grabFocus();
-            }else{
+            } else {
                 double NumMonths = Double.parseDouble(txtFPTaxJuros.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtFPTaxJuros.setText("");
@@ -616,34 +618,34 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
     private void txtFPValPrestFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFPValPrestFocusLost
         // TODO add your handling code here:
         try {
-            if(txtFPValPrest.getText().isEmpty()){
+            if (txtFPValPrest.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtFPValPrest.grabFocus();
-            }else{
+            } else {
                 double NumMonths = Double.parseDouble(txtFPValPrest.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtFPValPrest.setText("");
             JOptionPane.showMessageDialog(null, msg);
             txtFPValPrest.grabFocus();
         }
-        
+
     }//GEN-LAST:event_txtFPValPrestFocusLost
 
     private void txtARNumMesesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtARNumMesesFocusLost
         // TODO add your handling code here:
         try {
-            if(txtARNumMeses.getText().isEmpty()){
+            if (txtARNumMeses.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtARNumMeses.grabFocus();
-            }else{
+            } else {
                 double NumMonths = Double.parseDouble(txtARNumMeses.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtARNumMeses.setText("");
@@ -655,14 +657,14 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
     private void txtARTaxJurosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtARTaxJurosFocusLost
         // TODO add your handling code here:
         try {
-            if(txtARTaxJuros.getText().isEmpty()){
+            if (txtARTaxJuros.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtARTaxJuros.grabFocus();
-            }else{
+            } else {
                 double NumMonths = Double.parseDouble(txtARTaxJuros.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtARTaxJuros.setText("");
@@ -674,21 +676,21 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
     private void txtARValDepFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtARValDepFocusLost
         // TODO add your handling code here:
         try {
-            if(txtARValDep.getText().isEmpty()){
+            if (txtARValDep.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtARValDep.grabFocus();
-            }else{
+            } else {
                 double NumMonths = Double.parseDouble(txtARValDep.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtARValDep.setText("");
             JOptionPane.showMessageDialog(null, msg);
             txtARValDep.grabFocus();
         }
-        
+
     }//GEN-LAST:event_txtARValDepFocusLost
 
     private void btnCalcFCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcFCapActionPerformed
@@ -698,12 +700,12 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
         double capital = Double.parseDouble(txtFCapCapital.getText());
         double valFinal;
         Calculadora calc = new Calculadora();
-        
+
         valFinal = calc.calcValorFCap(120, 0.83, 300);
-        
+
         txtFCapValFinal.setText(String.valueOf(valFinal));
-        
-        
+
+
     }//GEN-LAST:event_btnCalcFCapActionPerformed
 
     private void btnFCapClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFCapClearActionPerformed
@@ -712,43 +714,43 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
         txtFCapTaxMonth.setText("");
         txtFCapCapital.setText("");
         txtFCapValFinal.setText("");
-        
-        
+
+
     }//GEN-LAST:event_btnFCapClearActionPerformed
 
     private void txtFCapNumMonthsFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFCapNumMonthsFocusLost
         // TODO add your handling code here:
         try {
-            if(txtFCapNumMonths.getText().isEmpty()){
+            if (txtFCapNumMonths.getText().isEmpty()) {
                 txtFCapNumMonths.grabFocus();
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
-                
-            }else{
+
+            } else {
                 double NumMonths = Double.parseDouble(txtFCapNumMonths.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtFCapNumMonths.setText("");
             JOptionPane.showMessageDialog(null, msg);
             txtFCapNumMonths.grabFocus();
         }
-        
+
     }//GEN-LAST:event_txtFCapNumMonthsFocusLost
 
     private void txtFCapTaxMonthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFCapTaxMonthFocusLost
         // TODO add your handling code here:
         try {
-            if(txtFCapTaxMonth.getText().isEmpty()){
+            if (txtFCapTaxMonth.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtFCapTaxMonth.grabFocus();
-                
-            } else{
+
+            } else {
                 double taxmonth = Double.parseDouble(txtFCapTaxMonth.getText());
             }
-           
+
         } catch (Exception e) {
             System.out.println(e);
             String msg = "Valor inválido, preencha com válores numéricos";
@@ -761,15 +763,15 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
     private void txtFCapCapitalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFCapCapitalFocusLost
         // TODO add your handling code here:
         try {
-            if(txtFCapCapital.getText().isEmpty()){
+            if (txtFCapCapital.getText().isEmpty()) {
                 String msg = "Campo está vazio";
                 JOptionPane.showMessageDialog(null, msg);
                 txtFCapCapital.grabFocus();
-                
-            }else{
+
+            } else {
                 double Capital = Double.parseDouble(txtFCapCapital.getText());
             }
-           
+
         } catch (Exception e) {
             String msg = "Valor inválido, preencha com válores numéricos";
             txtFCapCapital.setText("");
@@ -813,6 +815,42 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
             }
         });
     }
+    //Classe para operações com threads
+    public class checaSaida extends Thread{
+        public void run(){
+            
+            while(true){
+            String msg = "Fim da aula! Salve seus arquivos, desligue o PC, organize a bancada e até amanhã";
+            LocalTime currentMinute = LocalTime.now();
+            LocalTime almoco = LocalTime.of(11,50);
+            if(currentMinute.isAfter(almoco)){
+            JOptionPane.showMessageDialog(null, msg);
+            break;
+        }
+            }
+        
+        }
+    }
+    
+    public class atualizaHora extends Thread {
+
+        public void run() {
+
+            while (true) {
+                LocalDateTime hojeagora = LocalDateTime.now();
+                LocalTime saida = LocalTime.of(11, 50);
+                lblHours.setText(hojeagora.format(formHora));
+                lblDate.setText(hojeagora.format(formData));
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    java.util.logging.Logger.getLogger(TelaCalculadoraCidadao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+                }
+                
+            }
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcAplicReg;
@@ -823,7 +861,6 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
     private javax.swing.JButton btnFCapClear;
     private javax.swing.JButton btnProxAba;
     private javax.swing.JButton btnVoltAba;
-    private javax.swing.JLabel datetime;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -833,17 +870,18 @@ public class TelaCalculadoraCidadao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JLabel lblARNumMeses;
     private javax.swing.JLabel lblARTaxJuros;
     private javax.swing.JLabel lblARValFinal;
     private javax.swing.JLabel lblArValDep;
     private javax.swing.JLabel lblCopyright;
+    private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblFCapNumMonths;
     private javax.swing.JLabel lblFPNumMeses;
     private javax.swing.JLabel lblFPTaxJuros;
     private javax.swing.JLabel lblFPValFinal;
     private javax.swing.JLabel lblFPValPrest;
+    private javax.swing.JLabel lblHours;
     private javax.swing.JPanel pnlAplicReg;
     private javax.swing.JPanel pnlBase1;
     private javax.swing.JPanel pnlBase2;
