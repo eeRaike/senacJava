@@ -10,6 +10,18 @@ public class main {
         radio.onOffRadio();
         radio.play();
         radio.volumeAumenta();
+        radio.volumeAumenta();
+        radio.volumeAumenta();
+        radio.volumeAumenta();
+        radio.volumeAumenta();
+        radio.volumeDiminui();
+        radio.dialAumenta();
+        radio.dialDiminui();
+        radio.pause();
+        radio.trocaFaixaSintonia();
+        radio.play();
+        radio.pause();
+        radio.onOffRadio();
         
     }
     
