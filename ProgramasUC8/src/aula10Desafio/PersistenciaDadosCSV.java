@@ -22,7 +22,7 @@ public class PersistenciaDadosCSV {
                 if(Arquivo.createNewFile()){
                     System.out.println("Arquivo criado com sucesso!");
                 }else {
-                     System.out.println("Arquivo já existente!");
+                     System.out.println("Arquivo já existe!");
                 }
             } catch (Exception e) {
                 System.out.println("\nERRO AO CRIAR ARQUIVO!!!");
