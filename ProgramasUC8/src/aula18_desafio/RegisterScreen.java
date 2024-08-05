@@ -248,7 +248,6 @@ public class RegisterScreen extends javax.swing.JFrame {
             UserRegister operator = new UserRegister();
             operator.inUsers(newUser);
         //retornar pra tela de login
-            JOptionPane.showMessageDialog(rootPane,"Usuário cadastrado com sucesso");
             LoginScreen loginScreen = new LoginScreen();
             loginScreen.setVisible(true);
             this.dispose();
