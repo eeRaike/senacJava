@@ -6,6 +6,9 @@ package aula18_desafio;
 
 import aula18_desafio.Util.UserRegister;
 import aula18_desafio.Util.Users;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -221,9 +224,13 @@ public class RegisterScreen extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        LoginScreen loginScreen = new LoginScreen();
-        loginScreen.setVisible(true);
-        this.dispose();
+        try {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.setVisible(true);
+            this.dispose();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RegisterScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed

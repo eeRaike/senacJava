@@ -4,7 +4,11 @@
  */
 package aula18_desafio;
 
+import aula18_desafio.Util.UserData;
 import aula18_desafio.Util.UserRegister;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +20,12 @@ public class LoginScreen extends javax.swing.JFrame {
     /**
      * Creates new form LoginScreen
      */
-    public LoginScreen() {
+    UserRegister operCarga = new UserRegister();
+    public LoginScreen() throws FileNotFoundException {
         initComponents();
+        operCarga.populateArrUserBank();
+        //Carga de dados do CSV
+        
     }
 
     /**
@@ -319,7 +327,11 @@ public class LoginScreen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginScreen().setVisible(true);
+                try {
+                    new LoginScreen().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

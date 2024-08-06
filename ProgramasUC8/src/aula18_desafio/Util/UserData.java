@@ -38,7 +38,8 @@ public class UserData {
             try {
                 FileWriter writer = new FileWriter(caminho);
                 
-                for (int i = 0; i < cargaDadosCSV.size(); i++) {
+                //for (int i = 0; i < cargaDadosCSV.size(); i++) {
+                for (int i = 0; i < listaItems.size(); i++) {
                     writer.write(
                       listaItems.get(i).getName()+ ","
                     + listaItems.get(i).getUserName()+ ","
@@ -64,6 +65,7 @@ public class UserData {
                     String username = vector[1];
                     String password = vector[2];
                     Users newItem = new Users(name,username,password);
+                    cargaDadosCSV.add(newItem);
                 }
                 leitorArquivos.close();
                 System.out.println("lido com sucesso, carga inserida");
@@ -71,7 +73,6 @@ public class UserData {
                 System.out.println("Erro na leitura");
             }
         return cargaDadosCSV;
-            //a
             
         }
     }
