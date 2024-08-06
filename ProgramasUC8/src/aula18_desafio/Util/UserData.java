@@ -70,7 +70,8 @@ public class UserData {
             } catch (Exception e) {
                 System.out.println("Erro na leitura");
             }
-            
+        return cargaDadosCSV;
+            //a
             
         }
     }
