@@ -11,7 +11,7 @@ public class UserData {
 
     
     //Onde deverá ser criado o arquivo para gravação dos dados
-    String caminho = "C:\\Users\\Aluno\\Documents\\Raike\\senacJava\\ProgramasUC8\\userData.txt";
+    String caminho = "C:\\Users\\Raike\\Downloads\\testeloginthingy\\data.txt";
     
     ArrayList<Users> cargaDadosCSV = new ArrayList<>();
     
