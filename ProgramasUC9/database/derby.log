@@ -1,0 +1,37 @@
+Mon Aug 19 10:05:45 BRT 2024 : Apache Derby Servidor de Rede - 10.14.2.0 - (1828579) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+----------------------------------------------------------------
+Mon Aug 19 10:18:27 BRT 2024:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instância a816c00e-0191-6abe-5a6d-00001f5a7ff0
+no diretório de banco de dados C:\Users\Aluno\Documents\Raike\senacJava\ProgramasUC9\database\DB_Test01 
+
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.8+9-LTS-211
+user.dir=C:\Program Files\Java\db-derby-10.14.2.0-bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Aluno\Documents\Raike\senacJava\ProgramasUC9\database
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Aug 19 10:18:28 BRT 2024:
+Encerrando a instância a816c00e-0191-6abe-5a6d-00001f5a7ff0
+Mon Aug 19 10:18:28 BRT 2024 Thread[DRDAConnThread_2,5,main] (DATABASE = DB_Test01), (DRDAID = {2}), Banco de dados 'DB_Test01' fechado.
+----------------------------------------------------------------
+Mon Aug 19 10:18:58 BRT 2024:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instância 6ede40af-0191-6abe-5a6d-00001f5a7ff0
+no diretório de banco de dados C:\Users\Aluno\Documents\Raike\senacJava\ProgramasUC9\database\DB_Test01 
+
+java.vendor=Oracle Corporation
+java.runtime.version=17.0.8+9-LTS-211
+user.dir=C:\Program Files\Java\db-derby-10.14.2.0-bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\Aluno\Documents\Raike\senacJava\ProgramasUC9\database
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Aug 19 11:51:38 BRT 2024: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Aug 19 11:51:38 BRT 2024:
+Encerrando a instância 6ede40af-0191-6abe-5a6d-00001f5a7ff0
+----------------------------------------------------------------

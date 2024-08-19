@@ -1,0 +1,1 @@
+Pro código funcionar é necessário colocar o path dentro da classe UserRegister :)
