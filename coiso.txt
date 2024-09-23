@@ -1,0 +1,8 @@
+if(tbDadosUsuarios.getSelectionModel().isSelectionEmpty()){
+                btnAtualizaUsuario.setEnabled(false);
+                btnDeletarUsuario.setEnabled(false);
+            }else{
+                btnAtualizaUsuario.setEnabled(true);
+                btnDeletarUsuario.setEnabled(true);
+            
+            }
