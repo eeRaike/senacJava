@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 if(tbDadosUsuarios.getSelectionModel().isSelectionEmpty()){
                 btnAtualizaUsuario.setEnabled(false);
                 btnDeletarUsuario.setEnabled(false);
@@ -5,4 +6,13 @@ if(tbDadosUsuarios.getSelectionModel().isSelectionEmpty()){
                 btnAtualizaUsuario.setEnabled(true);
                 btnDeletarUsuario.setEnabled(true);
             
+=======
+if(tbDadosUsuarios.getSelectionModel().isSelectionEmpty()){
+                btnAtualizaUsuario.setEnabled(false);
+                btnDeletarUsuario.setEnabled(false);
+            }else{
+                btnAtualizaUsuario.setEnabled(true);
+                btnDeletarUsuario.setEnabled(true);
+            
+>>>>>>> d1843d69aee718f0fe6bc105d25b6b60d737e848
             }
