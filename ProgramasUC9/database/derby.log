@@ -1,7 +1,7 @@
-Mon Sep 16 10:00:29 BRT 2024 : Apache Derby Servidor de Rede - 10.14.2.0 - (1828579) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Mon Sep 23 09:18:21 BRT 2024 : Apache Derby Servidor de Rede - 10.14.2.0 - (1828579) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Mon Sep 16 10:00:31 BRT 2024:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instância a816c00e-0191-faeb-954b-00001f5a7ff0
+Mon Sep 23 09:18:23 BRT 2024:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instância a816c00e-0192-1ed1-896b-00001f5a7ff0
 no diretório de banco de dados C:\Users\Aluno\Documents\Raike\senacJava\ProgramasUC9\database\DB_TESTE2 
 
 java.vendor=Oracle Corporation
@@ -12,9 +12,3 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=C:\Users\Aluno\Documents\Raike\senacJava\ProgramasUC9\database
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-----------------------------------------------------------------
-Mon Sep 16 11:52:33 BRT 2024: Shutting down Derby engine
-----------------------------------------------------------------
-Mon Sep 16 11:52:33 BRT 2024:
-Encerrando a instância a816c00e-0191-faeb-954b-00001f5a7ff0
-----------------------------------------------------------------
